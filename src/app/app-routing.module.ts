@@ -2,7 +2,6 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { PageNotFoundComponent }    from './not-found.component';
-import { WorkComponent } from "./work/work.component";
 import {QueryComponent} from "./component/query/query.component";
 import {LoginComponent} from "./component/login/login.component";
 import {SqlComponent} from "./component/sql/sql.component";
