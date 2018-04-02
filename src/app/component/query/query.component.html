@@ -1,17 +1,30 @@
 <div>
-
+  <mat-toolbar>Measures</mat-toolbar>
   <section class="example-section">
-    <label class="example-margin">Rating:</label>
-    <mat-checkbox class="example-margin" [(ngModel)]="a">1</mat-checkbox>
-    <mat-checkbox class="example-margin" [(ngModel)]="b">2</mat-checkbox>
-    <mat-checkbox class="example-margin" [(ngModel)]="c">3</mat-checkbox>
-    <mat-checkbox class="example-margin" [(ngModel)]="d">4</mat-checkbox>
+
+    <mat-checkbox class="example-margin" [(ngModel)]="a">Number of Event</mat-checkbox>
+    <mat-checkbox class="example-margin" [(ngModel)]="b">rsvp</mat-checkbox>
+    <!--<mat-checkbox class="example-margin" [(ngModel)]="c">3</mat-checkbox>-->
+    <!--<mat-checkbox class="example-margin" [(ngModel)]="d">4</mat-checkbox>-->
+  </section>
+  <mat-toolbar>Dimension</mat-toolbar>
+  <section class="example-section">
+
+    <label class="example-margin">Time:</label>
+    <mat-checkbox class="example-margin" [(ngModel)]="aa">CA</mat-checkbox>
+    <mat-checkbox class="example-margin" [(ngModel)]="bb">IL</mat-checkbox>
+  </section>
+  <section class="example-section">
+    <label class="example-margin">Duration:</label>
+    <mat-checkbox class="example-margin" [(ngModel)]="aa">CA</mat-checkbox>
+    <mat-checkbox class="example-margin" [(ngModel)]="bb">IL</mat-checkbox>
   </section>
 
   <section class="example-section">
     <label class="example-margin">Location:</label>
     <mat-checkbox class="example-margin" [(ngModel)]="aa">CA</mat-checkbox>
     <mat-checkbox class="example-margin" [(ngModel)]="bb">IL</mat-checkbox>
+
   </section>
   <button mat-raised-button color="primary" routerLink="/" routerLinkActive="active">Submit</button>
 </div>
