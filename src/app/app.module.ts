@@ -20,7 +20,12 @@ import { LoginComponent } from './component/login/login.component';
 import { QueryComponent } from './component/query/query.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SqlComponent } from './component/sql/sql.component';
-
+import {MatListModule} from '@angular/material/list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { PresentQuery1Component } from './component/present-query1/present-query1.component';
+import { PresentQuery2Component } from './component/present-query2/present-query2.component';
+import { PresentQuery4Component } from './component/present-query4/present-query4.component';
+import { PresentQuery8Component } from './component/present-query8/present-query8.component';
 
 @NgModule({
   imports: [
@@ -42,13 +47,19 @@ import { SqlComponent } from './component/sql/sql.component';
     ReactiveFormsModule,
     MatIconModule,
     MatSelectModule,
+    MatListModule,
+    MatSidenavModule,
   ],
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     LoginComponent,
     QueryComponent,
-    SqlComponent
+    SqlComponent,
+    PresentQuery1Component,
+    PresentQuery2Component,
+    PresentQuery4Component,
+    PresentQuery8Component
   ],
   providers: [],
   bootstrap: [AppComponent]
