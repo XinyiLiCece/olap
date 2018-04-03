@@ -26,9 +26,11 @@ import { PresentQuery1Component } from './component/present-query1/present-query
 import { PresentQuery2Component } from './component/present-query2/present-query2.component';
 import { PresentQuery4Component } from './component/present-query4/present-query4.component';
 import { PresentQuery8Component } from './component/present-query8/present-query8.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   imports: [
+    HttpClientModule,
     BrowserModule,
     MatButtonModule,
     MatMenuModule,
