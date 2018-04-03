@@ -32,6 +32,7 @@ export class PresentQuery2Component implements AfterViewInit {
     this.http.get<any>('http://localhost:1234/api/database/1/query/2').subscribe(
       data =>{
         this.extract_data(data);
+        this.ngAfterViewInit();
 
       },
       error =>{
