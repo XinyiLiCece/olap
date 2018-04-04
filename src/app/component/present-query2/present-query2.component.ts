@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef, Injectable} from '@angular/core';
 import { Chart } from 'chart.js';
 import { HttpClient} from "@angular/common/http";
+import {DbService} from "../../service/db.service";
 
 @Component({
   selector: 'app-present-query2',
@@ -12,8 +13,8 @@ import { HttpClient} from "@angular/common/http";
 export class PresentQuery2Component implements AfterViewInit {
   chart = [];
   @ViewChild("mycanvas") mycanvas:ElementRef;
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient, private db:DbService) { }
+  dbversion:string;
   data={labels:[], values:[]};
 
   extract_data(data){
@@ -29,7 +30,8 @@ export class PresentQuery2Component implements AfterViewInit {
     this.data.values=[4,5,6];
   }
   ngOnInit(){
-    this.http.get<any>('http://localhost:1234/api/database/1/query/2').subscribe(
+    this.dbversion=this.db.getDbVersion();
+    this.http.get<any>(`https://adbm-final.herokuapp.com/api/database/${this.dbversion}/query/2`).subscribe(
       data =>{
         this.extract_data(data);
         this.ngAfterViewInit();
@@ -45,7 +47,7 @@ export class PresentQuery2Component implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.mycanvas);
+    //console.log(this.mycanvas);
     var ctx =  this.mycanvas.nativeElement.getContext('2d');
     this.chart = new Chart(ctx, {
       type: 'bar',

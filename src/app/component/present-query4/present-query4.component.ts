@@ -1,5 +1,8 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Chart } from 'chart.js';
+import { HttpClient} from "@angular/common/http";
+import {DbService} from "../../service/db.service";
+
 @Component({
   selector: 'app-present-query4',
   templateUrl: './present-query4.component.html',
@@ -8,8 +11,43 @@ import { Chart } from 'chart.js';
 export class PresentQuery4Component implements AfterViewInit{
   chart = [];
   @ViewChild("mycanvas") mycanvas:ElementRef;
-  constructor() { }
+  constructor(private http:HttpClient, private db:DbService) { }
+  colorset=['#FF69B4','#00FF00','#8A2BE2','#0000FF','#191970','#800000'];
+  data={labels:[], datasets:[]};
+  dbversion:string;
+  extract_data(data){
+    this.data.labels=[];
+    this.data.datasets=[];
+    for (let i=0; i<data[0].month.length; i++){
+      this.data.labels.push(data[0].month[i]+'/'+data[0].year[i]);
+    }
+    let k=0;
+    for (let e of data){
+      this.data.datasets.push({
+        data: e.avg_rsvp,
+        label: e.topic,
+        borderColor: this.colorset[k],
+        fill:false
+      });
+      k=(k+1)%this.colorset.length;
+    }
+  }
 
+  ngOnInit(){
+    this.http.get<any>(`https://adbm-final.herokuapp.com/api/database/${this.dbversion}/query/4`).subscribe(
+      data =>{
+        this.extract_data(data);
+        this.ngAfterViewInit();
+
+      },
+      error =>{
+        console.log('error');
+        // this.mock_data();
+        // this.ngAfterViewInit();
+
+      }
+    )
+  }
   ngAfterViewInit() {
     console.log(this.mycanvas);
 
@@ -17,29 +55,13 @@ export class PresentQuery4Component implements AfterViewInit{
     this.chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['Jan','Feb','Mar','Apr','May','Jul','Jun','Aug','Sep','Oct','Nov','Dec'],
-        datasets: [{
-            data: [86,114,106,106,107,111,133,221,783,2478,478,89],
-            label: "Topic1",
-            borderColor: "#3e95cd",
-            fill: false
-          }, {
-            data: [282,350,411,502,635,809,947,1402,3700,5267,111,133],
-            label: "Topic2",
-            borderColor: "#8e5ea2",
-            fill: false
-          }, {
-            data: [168,170,178,190,203,276,408,547,675,734,350,893],
-            label: "Topic3",
-            borderColor: "#3cba9f",
-            fill: false
-          },
-        ]
+        labels: this.data.labels,
+        datasets: this.data.datasets
       },
       options: {
         title: {
           display: true,
-          text: 'Find the top 5 popular topics.'
+          text: 'Average event rsvp every month'
         }
       }
     });

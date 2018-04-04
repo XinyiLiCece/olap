@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Injectable} from '@angular/core';
+import {DbService} from "./service/db.service";
 
 
 
@@ -8,8 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 
-
+@Injectable()
 export class AppComponent {
+  constructor(private db:DbService) {}
   title = 'app';
+  setVersion(version){
+    this.db.setDbVersion(version);
+  }
 
 }

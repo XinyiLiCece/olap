@@ -9,12 +9,13 @@
   <button mat-button [matMenuTriggerFor]="menudb">Database</button>
   <!-- To do 1:drowdown select database-->
   <mat-menu #menudb="matMenu">
-      <button mat-menu-item>MySQL</button>
-      <button mat-menu-item>Neo4j</button>
-      <button mat-menu-item>MongoDB</button>
-     
+      <button mat-menu-item (click)="setVersion(1)">MySQL</button>
+      <button mat-menu-item (click)="setVersion(2)">MongoDB</button>
+      <button mat-menu-item (click)="setVersion(3)">Neo4j</button>
+
+
     </mat-menu>
-    
+
   <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
 
 </mat-toolbar>
@@ -138,15 +139,17 @@
   </mat-drawer>
   <mat-drawer-content>
 
-
+    <div style="margin-left: 15px">
+      <router-outlet></router-outlet>
+    </div>
     <!-- here should be <router-outlet> -->
-    <router-outlet></router-outlet>
+
   </mat-drawer-content>
 </mat-drawer-container>
 
 <!--<router-outlet></router-outlet>-->
 
-<!-- 
+<!--
  <header></header>
  <mat-drawer-container>
    <mat-drawer>
