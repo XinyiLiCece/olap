@@ -1,7 +1,27 @@
+html,
+body {
+    margin: 0;
+}
 
-mat-drawer-container {
-   margin-top:10px;
-   height:80vh !important ;
-   width:80vw !important ;
-    
- }
+#nav {
+    position: fixed;
+    z-index: 255;
+}
+
+.nav-space {
+    min-height: 64px;
+}
+
+.example-container {
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
+.drawer {
+    max-width: 30vw;
+}
+
+.demo-item {
+    color: blue;
+    cursor: pointer;
+}

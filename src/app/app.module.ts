@@ -28,6 +28,7 @@ import { PresentQuery4Component } from './component/present-query4/present-query
 import { PresentQuery8Component } from './component/present-query8/present-query8.component';
 import {HttpClientModule} from "@angular/common/http";
 import {DbService} from "./service/db.service";
+import {AuthService} from './service/auth-service';
 
 @NgModule({
   imports: [
@@ -64,7 +65,7 @@ import {DbService} from "./service/db.service";
     PresentQuery4Component,
     PresentQuery8Component
   ],
-  providers: [DbService],
+  providers: [DbService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

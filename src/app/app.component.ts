@@ -1,5 +1,6 @@
 import {Component, Injectable} from '@angular/core';
 import {DbService} from "./service/db.service";
+import { AuthService } from './service/auth-service';
 
 
 
@@ -11,10 +12,21 @@ import {DbService} from "./service/db.service";
 
 @Injectable()
 export class AppComponent {
-  constructor(private db:DbService) {}
+  version: string;
+  version_list: string[];
+
+  constructor(private db:DbService, private authService: AuthService) {
+    this.version = "MySQL";
+    this.version_list = [, "MySQL", "MongoDB", "Neo4j"]
+  }
   title = 'app';
   setVersion(version){
     this.db.setDbVersion(version);
+    this.version = this.version_list[version];
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
 }

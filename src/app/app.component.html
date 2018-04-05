@@ -1,150 +1,186 @@
-<mat-toolbar color="primary">
-  <h6 style="margin-right: 20px">OLAP</h6>
-  <!-- <button mat-button routerLink="/query" routerLinkActive="active">Analysis</button>
+<mat-toolbar color="primary" id="nav">
+    <h6 style="margin-right: 20px">Demo</h6>
+    <!-- <button mat-button routerLink="/query" routerLinkActive="active">Analysis</button>
   <button mat-button routerLink="/sql" routerLinkActive="active">SQL</button>
   <button mat-button routerLink="/login" routerLinkActive="active">Login</button> -->
-  <!--<button mat-button routerLink="/edu" routerLinkActive="active">Education</button>-->
-  <!--<button mat-button routerLink="/contact" routerLinkActive="active">Contact</button>-->
+    <!--<button mat-button routerLink="/edu" routerLinkActive="active">Education</button>-->
+    <!--<button mat-button routerLink="/contact" routerLinkActive="active">Contact</button>-->
 
-  <button mat-button [matMenuTriggerFor]="menudb">Database</button>
-  <!-- To do 1:drowdown select database-->
-  <mat-menu #menudb="matMenu">
-      <button mat-menu-item (click)="setVersion(1)">MySQL</button>
-      <button mat-menu-item (click)="setVersion(2)">MongoDB</button>
-      <button mat-menu-item (click)="setVersion(3)">Neo4j</button>
+    <button mat-button [matMenuTriggerFor]="menudb">{{version}}</button>
+    <!-- To do 1:drowdown select database-->
+    <mat-menu #menudb="matMenu">
+        <button mat-menu-item (click)="setVersion(1)">MySQL</button>
+        <button mat-menu-item (click)="setVersion(2)">MongoDB</button>
+        <button mat-menu-item (click)="setVersion(3)">Neo4j</button>
 
 
     </mat-menu>
 
-  <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
+    <button mat-button routerLink="/login" routerLinkActive="active" *ngIf="!authService.isAuthened()">Login</button>
+    <button mat-button (click)="onLogout()" *ngIf="authService.isAuthened()">Logout</button>
 
 </mat-toolbar>
-<div></div>
+
 <mat-drawer-container class="example-container">
 
-  <mat-drawer mode="side" opened="open">
+    <mat-drawer mode="side" opened="open" class="drawer">
+        <div class="nav-space">space</div>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Event
+                </mat-panel-title>
+            </mat-expansion-panel-header>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Event
-        </mat-panel-title>
-      </mat-expansion-panel-header>
+            <mat-list>
+                <!-- <mat-list-item routerLink="/present-query1" routerLinkActive="active-link"> 1.Find the most popular event topic of each seasons </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item routerLink="/present-query8" routerLinkActive="active-link"> 8.Find the top 3 popular topics. (find the top 5 topics which have the most #events.) </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> 9. Find the top 3 popular topics(have most relevant events) in every city. </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> 11.Find the top 3 popular topics(have most relevant events) in every year </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> 15. Find the most popular topic in each duration length </mat-list-item>
+                <mat-divider></mat-divider>
 
-      <mat-list>
-        <mat-list-item routerLink="/present-query1" routerLinkActive="active-link"> 1.Find the most popular event topic of each seasons </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item routerLink="/present-query8" routerLinkActive="active-link"> 8.Find the top 5 popular topics. (find the top 5 topics which have the most #events.) </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> 9. Find the top 3 popular topics(have most relevant events) in every city. </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> 11.Find the top 3 popular topics(have most relevant events) in every year </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> 15. Find the most popular topic in each duration length </mat-list-item>
-        <mat-divider></mat-divider>
+                <mat-list-item> 19. Find the number of events held by different scales</mat-list-item>
+                <mat-divider></mat-divider> -->
 
-        <mat-list-item> 19. Find the number of events held by different scales</mat-list-item>
-        <mat-divider></mat-divider>
+                <mat-list-item routerLink="/present-query1" routerLinkActive="active-link" class="demo-item"> Most popular topic, every season</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item routerLink="/present-query8" routerLinkActive="active-link" class="demo-item"> Top 3 popular topics</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> Top 3 popular topics, every city. </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> Top 3 popular topics, every year </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> Most popular topic, different duration length </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> Number of events, different group scales</mat-list-item>
+                <mat-divider></mat-divider>
+            </mat-list>
 
-      </mat-list>
+        </mat-expansion-panel>
 
-    </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    RSVP
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list>
+                <!-- <mat-list-item> 6.Given city, find the group(s) which have most rsvp</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item routerLink="/present-query2" routerLinkActive="active-link"> 2.Find different group join modes' average event rsvp </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> 3.Given city X, find average event rsvp at every venue </mat-list-item>
+                <mat-divider></mat-divider>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          RSVP
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-list>
-        <mat-list-item> 6.Given city, find the group(s) which have most rsvp</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item routerLink="/present-query2" routerLinkActive="active-link"> 2.Find different group join modes' average event rsvp </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> 3.Given city X, find average event rsvp at every venue </mat-list-item>
-        <mat-divider></mat-divider>
+                <mat-list-item routerLink="/present-query4" routerLinkActive="active-link"> 4.Find different topics' average event rsvp in every month</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> 5.Find different topics' average event rsvp with different duration
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>14.Find the average event rsvp with different fee level
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> 16.Find the average event rsvp which requires fee in each city
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> 18.Given city, find the average event rsvp of venues with different rating
+                </mat-list-item>
+                <mat-divider></mat-divider> -->
 
-        <mat-list-item routerLink="/present-query4" routerLinkActive="active-link"> 4.Find different topics' average event rsvp in every month</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> 5.Find different topics' average event rsvp with different duration
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>14.Find the average event rsvp with different fee level
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> 16.Find the average event rsvp which requires fee in each city
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> 18.Given city, find the average event rsvp of venues with different rating
-        </mat-list-item>
-        <mat-divider></mat-divider>
+                <mat-list-item> Group with most rsvp, given city</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item routerLink="/present-query2" routerLinkActive="active-link" class="demo-item"> Average rsvp, every join mode </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> Average rsvp, every venue, given city </mat-list-item>
+                <mat-divider></mat-divider>
+
+                <mat-list-item routerLink="/present-query4" routerLinkActive="active-link" class="demo-item"> Average rsvp, every month, every topic</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> Average rsvp, different duration length, every topic
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> Average rsvp, different fee amount
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> Average rsvp, requires fee, every city
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> Average rsvp, different venue rating, given city
+                </mat-list-item>
+                <mat-divider></mat-divider>
+
+            </mat-list>
 
 
+        </mat-expansion-panel>
 
-      </mat-list>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    City
+                </mat-panel-title>
+            </mat-expansion-panel-header>
 
+            <mat-list>
+                <!-- <mat-list-item> 10.Find the top 1 popular cities(have most relevant events) for every topic.  </mat-list-item> -->
+                <mat-list-item> Most popular cities, every topic. </mat-list-item>
+                <mat-divider></mat-divider>
 
-    </mat-expansion-panel>
+            </mat-list>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          City
-        </mat-panel-title>
-      </mat-expansion-panel-header>
+        </mat-expansion-panel>
 
-      <mat-list>
-        <mat-list-item> 10.Find the top 1 popular cities(have most relevant events) for every topic.
-        </mat-list-item>
-        <mat-divider></mat-divider>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Month
+                </mat-panel-title>
+            </mat-expansion-panel-header>
 
-      </mat-list>
+            <mat-list>
+                <!-- <mat-list-item> 12.Find the top 3 popular year(have most relevant events) for every topic
+                </mat-list-item> -->
+                <mat-list-item> Top 3 popular year, every topic</mat-list-item>
+                <mat-divider></mat-divider>
+            </mat-list>
 
-    </mat-expansion-panel>
+        </mat-expansion-panel>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Month
-        </mat-panel-title>
-      </mat-expansion-panel-header>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Group
+                </mat-panel-title>
+            </mat-expansion-panel-header>
 
-      <mat-list>
-        <mat-list-item> 12.Find the top 3 popular year(have most relevant events) for every topic
-        </mat-list-item>
-        <mat-divider></mat-divider>
-      </mat-list>
+            <mat-list>
+                <!-- <mat-list-item> 13.Find the group(s) which have most average event rsvp in each season</mat-list-item> -->
+                <mat-list-item> Group with most average rsvp, each season</mat-list-item>
+                <mat-divider></mat-divider>
+                <!-- <mat-list-item> 6.Given city, find the group(s) which have most rsvp </mat-list-item> -->
+                <mat-list-item> Group with most average rsvp, given city </mat-list-item>
+                <mat-divider></mat-divider>
+                <!-- <mat-list-item> 7.Find the month in year Y which good groups held events most (group rating > 4)</mat-list-item> -->
+                <mat-list-item> Month in given year which excellent groups held events most</mat-list-item>
+                <mat-divider></mat-divider>
+            </mat-list>
 
-    </mat-expansion-panel>
+        </mat-expansion-panel>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Group
-        </mat-panel-title>
-      </mat-expansion-panel-header>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="nav-space">space</div>
+        <div style="margin-left: 15px">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- here should be <router-outlet> -->
 
-      <mat-list>
-        <mat-list-item> 13.Find the group(s) which have most average event rsvp in each season
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> 6.Given city, find the group(s) which have most rsvp </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> 7.Find the month in year Y which good groups held events most (group rating > 4)</mat-list-item>
-        <mat-divider></mat-divider>
-      </mat-list>
-
-    </mat-expansion-panel>
-
-  </mat-drawer>
-  <mat-drawer-content>
-
-    <div style="margin-left: 15px">
-      <router-outlet></router-outlet>
-    </div>
-    <!-- here should be <router-outlet> -->
-
-  </mat-drawer-content>
+    </mat-drawer-content>
 </mat-drawer-container>
 
 <!--<router-outlet></router-outlet>-->

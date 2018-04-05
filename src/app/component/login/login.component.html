@@ -1,16 +1,19 @@
 <div class="example-container">
-  <mat-form-field  >
-    <input matInput placeholder="Username">
-  </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-  </mat-form-field>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <h2 class="mb-4">User Login</h2>
+        <mat-form-field class="field">
+            <input matInput placeholder="Username" name="username" required ngModel (input)="onChange()">
+        </mat-form-field>
 
-  <mat-form-field>
-    <mat-select placeholder="AuthLevel">
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
+        <mat-form-field class="field">
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" name="password" required ngModel (input)="onChange()">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+        <button mat-raised-button type="submit" [disabled]="isSubmit">Login</button>
+
+        <div class="alert" *ngIf="isFailed">
+            Email or Password is Incorrect.
+        </div>
+    </form>
 </div>

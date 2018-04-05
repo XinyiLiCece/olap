@@ -1,28 +1,33 @@
-
-
-  .example-container {
+.example-container {
     display: flex;
-    flex-direction: column;
-    
-  }
-  
-  .example-container > * {
-    width: 60%;
-  }
-  
-  .example-right-align {
-    text-align: right;
-  }
-  
-  input.example-right-align::-webkit-outer-spin-button,
-  input.example-right-align::-webkit-inner-spin-button {
-    display: none;
-  }
-  
-  input.example-right-align {
-    -moz-appearance: textfield;
-  }
+    justify-content: center;
+}
 
-  md-icon{
+.example-container>* {
+    width: 60%;
+}
+
+.example-right-align {
+    text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+}
+
+input.example-right-align {
+    -moz-appearance: textfield;
+}
+
+md-icon {
     font-family: 'Material Icons' !important;
-  }
+}
+
+.field {
+    width: 100%;
+}
+
+.alert {
+    color: red;
+}
