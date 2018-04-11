@@ -8,6 +8,7 @@ import{ PresentQuery7Component } from './component/present-query7/present-query7
 import{ PresentQuery8Component } from './component/present-query8/present-query8.component';
 import{ PresentQuery9Component } from './component/present-query9/present-query9.component';
 import {LoginComponent} from "./component/login/login.component";
+import {PresentQuery13Component} from "./component/present-query13/present-query13.component";
 /**import {QueryComponent} from "./component/query/query.component";
 
 import {SqlComponent} from "./component/sql/sql.component";
@@ -47,7 +48,12 @@ const appRoutes: Routes = [
   { path: 'present-query4',  component: PresentQuery4Component },
   { path: 'present-query7',  component: PresentQuery7Component }, 
   { path: 'present-query8',  component: PresentQuery8Component },
+
   { path: 'present-query9',  component: PresentQuery9Component },
+
+  { path: 'present-query13',  component: PresentQuery13Component},
+  
+
   { path: '**', component: PageNotFoundComponent }
 ];
 
