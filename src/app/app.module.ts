@@ -6,6 +6,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 
+
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatCardModule, MatChipsModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatSelectModule,
@@ -29,6 +30,9 @@ import { PresentQuery8Component } from './component/present-query8/present-query
 import {HttpClientModule} from "@angular/common/http";
 import {DbService} from "./service/db.service";
 import {AuthService} from './service/auth-service';
+import { PresentQuery7Component } from './component/present-query7/present-query7.component';
+
+import { PresentQuery9Component } from './component/present-query9/present-query9.component';
 
 @NgModule({
   imports: [
@@ -53,6 +57,8 @@ import {AuthService} from './service/auth-service';
     MatSelectModule,
     MatListModule,
     MatSidenavModule,
+
+    FormsModule,
   ],
   declarations: [
     AppComponent,
@@ -63,7 +69,9 @@ import {AuthService} from './service/auth-service';
     PresentQuery1Component,
     PresentQuery2Component,
     PresentQuery4Component,
-    PresentQuery8Component
+    PresentQuery8Component,
+    PresentQuery7Component,
+    PresentQuery9Component,
   ],
   providers: [DbService, AuthService],
   bootstrap: [AppComponent]

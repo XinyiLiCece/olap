@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PresentQuery1Component } from './present-query1.component';
+import { PresentQuery9Component } from './present-query9.component';
 
-describe('PresentQuery1Component', () => {
-  let component: PresentQuery1Component;
-  let fixture: ComponentFixture<PresentQuery1Component>;
+describe('PresentQuery9Component', () => {
+  let component: PresentQuery9Component;
+  let fixture: ComponentFixture<PresentQuery9Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PresentQuery1Component ]
+      declarations: [ PresentQuery9Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PresentQuery1Component);
+    fixture = TestBed.createComponent(PresentQuery9Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
