@@ -29,6 +29,9 @@ import { PresentQuery8Component } from './component/present-query8/present-query
 import {HttpClientModule} from "@angular/common/http";
 import {DbService} from "./service/db.service";
 import {AuthService} from './service/auth-service';
+import { PresentQuery13Component } from './component/present-query13/present-query13.component';
+import {MatTableModule} from '@angular/material/table';
+import {CdkTableModule} from '@angular/cdk/table';
 
 @NgModule({
   imports: [
@@ -53,6 +56,8 @@ import {AuthService} from './service/auth-service';
     MatSelectModule,
     MatListModule,
     MatSidenavModule,
+    MatTableModule,
+    CdkTableModule
   ],
   declarations: [
     AppComponent,
@@ -63,7 +68,8 @@ import {AuthService} from './service/auth-service';
     PresentQuery1Component,
     PresentQuery2Component,
     PresentQuery4Component,
-    PresentQuery8Component
+    PresentQuery8Component,
+    PresentQuery13Component
   ],
   providers: [DbService, AuthService],
   bootstrap: [AppComponent]
